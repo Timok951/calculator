@@ -1,0 +1,31 @@
+﻿<Window x:Class="calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:calculator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+       xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="387*"/>
+        </Grid.RowDefinitions>
+        <ComboBox x:Name="Fromulscombobox" HorizontalAlignment="Center" VerticalAlignment="Center" Width="616" Height="22" ItemsSource="{Binding Pages}" SelectedItem="{Binding Pageselected}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding AddCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            </ComboBox>
+            <Frame x:Name="FormulsFrame" Content="{Binding Pageshowing}" Height="NaN" Margin="10,5,10,10" Width="NaN" Grid.Row="1" NavigationUIVisibility="Hidden" Grid.Column="0"/>
+    </Grid>
+
+</Window>
